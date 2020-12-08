@@ -4,7 +4,7 @@
  * @authorId 686440496561913856
  * @website https://sendthigh.pics
  * @description Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection
- * @version 1.5.0
+ * @version 1.7.3
  * @source https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  * @updateUrl https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  */
@@ -23,7 +23,7 @@ module.exports =(() => {
 					github_username: "deadly",
 				}
 			],
-			version: "1.5.0",
+			version: "1.7.3",
 			description: "Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection"
         }
     };  
@@ -47,7 +47,8 @@ module.exports =(() => {
         "y": "y",
         "X": "Х",
         "x": "х",
-        "u": "υ"
+        "U": "U",
+        "u": "u"
     };
 
     return !global.ZeresPluginLibrary ? class {
@@ -108,19 +109,27 @@ module.exports =(() => {
                 }
     
                 async getCyrillic(textValue) {
-                    if (textValue.includes('http')) {
-                        return textValue
-                    }
-                    [...textValue].forEach(l => {
-                        try {
-                            (cyrDict[l] == undefined) ? "" : textValue = textValue.replace(l, cyrDict[l]);
-                        }
-                        catch{
+                    return textValue.split(' ').map(word => {
+                        lower = word.toLowerCase();
 
-                        }
-                    })
-                    
-                    return textValue
+                        textValue.split(' ').forEach(word => {
+                            if (
+                                !lowered.includes('discord.gg')
+                                && !lowered.includes('http')
+                                && !textValue.includes('```')
+                                && !lowered.includes('`')
+                                && !(word.charAt(0) === ":" && word.charAt(word.length - 1) === ":")
+                                && !(word.charAt(0) === "<" && word.charAt(word.length - 1) === ">")
+                                && word != '@everyone'
+                            ) {
+                                for (char in cyrDict) {
+                                    word = word.replace(new RegExp(char, 'g'), cyrDict[char]);
+                                }
+                            }
+                        });
+
+                        return word;
+                    }).join(" ");
                 }
     
                 setText(_e, text) {
