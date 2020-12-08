@@ -81,7 +81,6 @@ module.exports =(() => {
             let lastTextAreaEvent;
             let lowered;
             let char;
-            let word;
             let lastLength;
 
             return class Cyrillic extends Plugin {
@@ -114,25 +113,23 @@ module.exports =(() => {
                 async getCyrillic(textValue) {
                     return textValue.split(' ').map(word => {
 			            lowered = word.toLowerCase();
-                        textValue.split(' ').forEach(word => {
-                            if (
-                                !lowered.includes('discord.gg')
-                                && !lowered.includes('http')
-                                && !textValue.includes('```')
-                                && !lowered.includes('`')
-                                && !(word.charAt(0) === ":" && word.charAt(word.length - 1) === ":")
-                                && !(word.charAt(0) === "<" && word.charAt(word.length - 1) === ">")
-                                && word != '@everyone'
-                            ) {
-                                for (char in cyrDict) {
-                                    word = word.replace(new RegExp(char, 'g'), cyrDict[char]);
-                                }
+                        if (
+                            !lowered.includes('discord.gg')
+                            && !lowered.includes('http')
+                            && !textValue.includes('```')
+                            && !lowered.includes('`')
+                            && !(word.charAt(0) === ":" && word.charAt(word.length - 1) === ":")
+                            && !(word.charAt(0) === "<" && word.charAt(word.length - 1) === ">")
+                            && word != '@everyone'
+                        ) {
+                            for (char in cyrDict) {
+                                word = word.replace(new RegExp(char, 'g'), cyrDict[char]);
                             }
-                        });
+                        }
 
                         return word;
                     }).join(" ");
-                }
+                } 
     
                 setText(_e, text) {
                     const e = _e == null ? lastTextAreaEvent : _e;
