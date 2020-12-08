@@ -121,7 +121,6 @@ module.exports =(() => {
                 }
     
                 setText(_e, text) {
-                    console.log('setText function firing');
                     const e = _e == null ? lastTextAreaEvent : _e;
                     if(e && e.ref.current) {
                         e.ref.current.setValue(SlateModule.deserialize(text));
