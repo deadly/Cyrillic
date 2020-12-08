@@ -4,7 +4,7 @@
  * @authorId 686440496561913856
  * @website https://sendthigh.pics
  * @description Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection
- * @version 1.0
+ * @version 1.1.0
  */
 
 module.exports =(() => {
@@ -21,10 +21,32 @@ module.exports =(() => {
 					github_username: "deadly",
 				}
 			],
-			version: "1.0.0",
+			version: "1.1.0",
 			description: "Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection"
         }
     };  
+
+    const cyrDict = {
+        "A": "А",
+        "a": "а",
+        "B": "В",
+        "E": "Е",
+        "e": "е",
+        "K": "К",
+        "M": "М",
+        "H": "Н",
+        "O": "О",
+        "o": "о",
+        "P": "Р",
+        "p": "р",
+        "C": "С",
+        "c": "с",
+        "T": "Т",
+        "y": "y",
+        "X": "Х",
+        "x": "х",
+        "u": "υ"
+    };
 
     return !global.ZeresPluginLibrary ? class {
         getName = () => config.info.name
@@ -84,27 +106,6 @@ module.exports =(() => {
                 }
     
                 async getCyrillic(textValue, sending) {
-                    const cyrDict = {
-                        "A": "А",
-                        "a": "а",
-                        "B": "В",
-                        "E": "Е",
-                        "e": "е",
-                        "K": "К",
-                        "M": "М",
-                        "H": "Н",
-                        "O": "О",
-                        "o": "о",
-                        "P": "Р",
-                        "p": "р",
-                        "C": "С",
-                        "c": "с",
-                        "T": "Т",
-                        "y": "y",
-                        "X": "Х",
-                        "x": "х",
-                        "u": "υ"
-                    };
                     if (textValue.includes('http')) {
                         return textValue
                     }
@@ -121,6 +122,7 @@ module.exports =(() => {
                 }
     
                 setText(_e, text) {
+                    console.log('setText function firing');
                     const e = _e == null ? lastTextAreaEvent : _e;
                     if(e && e.ref.current) {
                         e.ref.current.setValue(SlateModule.deserialize(text));
