@@ -23,7 +23,7 @@ module.exports =(() => {
 					github_username: "deadly",
 				}
 			],
-			version: "1.1.0",
+			version: "1.3.0",
 			description: "Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection"
         }
     };  
