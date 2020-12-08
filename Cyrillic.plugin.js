@@ -79,6 +79,7 @@ module.exports =(() => {
             const { React } = DiscordModules;
             let lastRender = new Date();
             let lastTextAreaEvent;
+	    let lowered;
             let lastLength;
 
             return class Cyrillic extends Plugin {
@@ -109,9 +110,8 @@ module.exports =(() => {
                 }
     
                 async getCyrillic(textValue) {
-		    lowered = textValue.toLowerCase();
                     return textValue.split(' ').map(word => {
-
+			lowered = word.toLowerCase();
                         textValue.split(' ').forEach(word => {
                             if (
                                 !lowered.includes('discord.gg')
