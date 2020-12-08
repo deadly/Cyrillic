@@ -4,7 +4,7 @@
  * @authorId 686440496561913856
  * @website https://sendthigh.pics
  * @description Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection
- * @version 1.7.3
+ * @version 1.7.5
  * @source https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  * @updateUrl https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  */
@@ -23,7 +23,7 @@ module.exports =(() => {
 					github_username: "deadly",
 				}
 			],
-			version: "1.7.3",
+			version: "1.7.5",
 			description: "Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection"
         }
     };  
@@ -109,8 +109,8 @@ module.exports =(() => {
                 }
     
                 async getCyrillic(textValue) {
+		    lowered = textValue.toLowerCase();
                     return textValue.split(' ').map(word => {
-                        lowered = textValue.toLowerCase();
 
                         textValue.split(' ').forEach(word => {
                             if (
