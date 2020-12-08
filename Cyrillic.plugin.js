@@ -110,7 +110,7 @@ module.exports =(() => {
     
                 async getCyrillic(textValue) {
                     return textValue.split(' ').map(word => {
-                        lowered = word.toLowerCase();
+                        lowered = textValue.toLowerCase();
 
                         textValue.split(' ').forEach(word => {
                             if (
