@@ -5,6 +5,7 @@
  * @website https://sendthigh.pics
  * @description Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection
  * @version 1.3.0
+ * @source https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  * @updateUrl https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  */
 
