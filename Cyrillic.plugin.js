@@ -26,7 +26,7 @@ module.exports =(() => {
 			version: "1.8.5",
 			description: "Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection"
         }
-    };  
+    };
 
     const cyrDict = {
         "A": "А",
@@ -93,11 +93,11 @@ module.exports =(() => {
                             process.nextTick(() => this.setText(null, ""))
                         });
                     });
-                    
-    
+
+
                     Patcher.after(TextArea.component.prototype, "render", e => {
                         const current = new Date();
-    
+
                         if (current - lastRender > 10) {
                             this.getCyrillic(e.props.textValue, false).then(cyrillic => {
                                 if (e.props.textvalue != cyrillic) {
@@ -109,7 +109,7 @@ module.exports =(() => {
                         lastRender = current;
                     });
                 }
-    
+
                 async getCyrillic(textValue) {
                     lowered = textValue.toLowerCase();
                     if (lowered.includes('-ignore')) {
@@ -124,6 +124,11 @@ module.exports =(() => {
                             && !lowered.includes('`')
                             && !(word.charAt(0) === ":" && word.charAt(word.length - 1) === ":")
                             && !(word.charAt(0) === "<" && word.charAt(word.length - 1) === ">")
+                            //Will be switched to use regex when I'm not lazy
+                            && !lowered.includes('!')
+                            && !lowered.includes('-')
+                            && !lowered.includes('/')
+                            && !lowered.includes('$')
                             && word != '@everyone'
                         ) {
                             for (char in cyrDict) {
@@ -133,8 +138,8 @@ module.exports =(() => {
 
                         return word;
                     }).join(" ");
-                } 
-    
+                }
+
                 setText(_e, text) {
                     const e = _e == null ? lastTextAreaEvent : _e;
                     if(e && e.ref.current) {
@@ -145,7 +150,7 @@ module.exports =(() => {
                         lastTextAreaEvent = e;
                     }
                 }
-    
+
                 onStop() {
                     Patcher.unpatchAll();
                 }
