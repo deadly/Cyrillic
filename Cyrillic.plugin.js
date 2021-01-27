@@ -125,10 +125,18 @@ module.exports =(() => {
                             && !(word.charAt(0) === ":" && word.charAt(word.length - 1) === ":")
                             && !(word.charAt(0) === "<" && word.charAt(word.length - 1) === ">")
                             //Will be switched to use regex when I'm not lazy
-                            && !lowered.includes('!')
-                            && !lowered.includes('-')
-                            && !lowered.includes('/')
-                            && !lowered.includes('$')
+                            && !(word.charAt(0) === '!')
+                            && !(word.charAt(0) === '-')
+                            && !(word.charAt(0) === '/')
+                            && !(word.charAt(0) === '$')
+                            && !(word.charAt(0) === '.')
+                            && !(word.charAt(0) === '?')
+                            && !(word.charAt(0) === 's?')
+                            && !(word.charAt(0) === '>')
+                            && !(word.charAt(0) === 't!')
+                            && !(word.charAt(0) === '|')
+                            && !(word.charAt(0) === ',')
+                            && !(word.charAt(0) === '!d')
                             && word != '@everyone'
                         ) {
                             for (char in cyrDict) {
