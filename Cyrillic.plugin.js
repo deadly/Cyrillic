@@ -4,7 +4,7 @@
  * @authorId 686440496561913856
  * @website https://sendthigh.pics
  * @description Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection
- * @version 1.8.5
+ * @version 1.9.0
  * @source https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  * @updateUrl https://raw.githubusercontent.com/deadly/Cyrillic/main/Cyrillic.plugin.js
  */
@@ -23,32 +23,39 @@ module.exports =(() => {
 					github_username: "deadly",
 				}
 			],
-			version: "1.8.5",
+			version: "1.9.0",
 			description: "Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection"
         }
     };
 
     const cyrDict = {
-        "A": "А",
-        "a": "а",
-        "B": "В",
-        "E": "Е",
-        "e": "е",
-        "K": "К",
-        "M": "М",
-        "H": "Н",
-        "O": "О",
-        "o": "о",
-        "P": "Р",
-        "p": "р",
-        "C": "С",
-        "c": "с",
-        "T": "Т",
-        "y": "y",
-        "X": "Х",
-        "x": "х",
-        "U": "U",
-        "u": "u"
+	"A": "А",
+	"a": "а",
+	"B": "В",
+	"C": "С",
+	"c": "с",
+	"E": "Е",
+	"e": "е",
+	"H": "Н",
+	"I": "І",
+	"i": "і",
+	"J": "Ј",
+	"j": "ј",
+	"K": "К",
+	"M": "М",
+	"O": "О",
+	"o": "о",
+	"P": "Р",
+	"p": "р",
+	"Q": "Ԛ",
+	"q": "ԛ",
+	"T": "Т",
+	"W": "Ԝ",
+	"w": "ԝ",
+	"X": "Х",
+	"x": "х",
+	"Y": "Ү",
+	"y": "у"
     };
 
     return !global.ZeresPluginLibrary ? class {
