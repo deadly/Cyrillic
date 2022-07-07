@@ -1,6 +1,6 @@
 /**
  * @name Cyrillic
- * @author Pokyo
+ * @author Deadly
  * @authorId 686440496561913856
  * @description Used for replacing suitable characters in a message with Cyrillic characters to bypass blacklisted word filters or to evade keyword detection
  * @version 1.8.5
